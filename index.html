@@ -178,11 +178,6 @@
     <span id="todayTag"></span>
   </div>
 
-  <div class="nav-toggle">
-    <button id="tabFormBtn" class="active">Formulario</button>
-    <button id="tabAdminBtn">Panel AMC</button>
-  </div>
-
   <!-- ===================== FORM VIEW ===================== -->
   <div id="viewForm">
 
@@ -219,12 +214,12 @@
             <input type="text" name="numDoc" required>
           </div>
           <div class="field">
-            <label>Fecha de nacimiento</label>
-            <input type="date" name="fechaNacimiento">
+            <label>Fecha de nacimiento <span class="req">*</span></label>
+            <input type="date" name="fechaNacimiento" required>
           </div>
           <div class="field">
-            <label>Ciudad de residencia</label>
-            <input type="text" name="ciudadResidencia">
+            <label>Ciudad de residencia <span class="req">*</span></label>
+            <input type="text" name="ciudadResidencia" required>
           </div>
           <div class="field">
             <label>Teléfono / WhatsApp <span class="req">*</span></label>
@@ -255,25 +250,26 @@
             <input type="text" name="ciudadInmueble" required>
           </div>
           <div class="field">
-            <label>Estrato</label>
-            <select name="estrato">
+            <label>Estrato <span class="req">*</span></label>
+            <select name="estrato" required>
               <option value="">Seleccione…</option>
               <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
             </select>
           </div>
           <div class="field">
-            <label>Tipo de inmueble</label>
-            <select name="tipoInmueble">
+            <label>Tipo de inmueble <span class="req">*</span></label>
+            <select name="tipoInmueble" required>
               <option value="">Seleccione…</option>
               <option>Casa</option>
               <option>Apartamento</option>
               <option>Casa campestre / finca</option>
+              <option>Casa o Apto en conjunto cerrado</option>
               <option>Otro</option>
             </select>
           </div>
           <div class="field">
-            <label>Uso del inmueble</label>
-            <select name="usoInmueble">
+            <label>Uso del inmueble <span class="req">*</span></label>
+            <select name="usoInmueble" required>
               <option value="">Seleccione…</option>
               <option>Vivienda permanente</option>
               <option>Segunda vivienda / recreo</option>
@@ -281,30 +277,32 @@
             </select>
           </div>
           <div class="field">
-            <label>Área construida (m²)</label>
-            <input type="number" min="0" name="area">
+            <label>Área construida (m²) <span class="req">*</span></label>
+            <input type="number" min="0" name="area" required>
           </div>
           <div class="field">
-            <label>Año de construcción</label>
-            <input type="number" min="1900" max="2026" name="anioConstruccion">
+            <label>Año de construcción <span class="req">*</span></label>
+            <input type="number" min="1900" max="2026" name="anioConstruccion" required>
           </div>
           <div class="field">
-            <label>Material de construcción</label>
-            <select name="material">
+            <label>Material de construcción <span class="req">*</span></label>
+            <select name="material" required>
               <option value="">Seleccione…</option>
-              <option>Concreto / mampostería</option>
-              <option>Mixta</option>
-              <option>Madera / metálica</option>
+              <option>Guadua/madera mas del 50%</option>
+              <option>Concreto reforzado</option>
+              <option>Mamposteria</option>
+              <option>Mixto</option>
+              <option>Metalica</option>
               <option>Otro</option>
             </select>
           </div>
           <div class="field">
-            <label>N.º de pisos del inmueble</label>
-            <input type="number" min="1" name="numPisos">
+            <label>N.º de pisos del inmueble <span class="req">*</span></label>
+            <input type="number" min="1" name="numPisos" required>
           </div>
           <div class="field">
-            <label>¿En conjunto cerrado / unidad residencial?</label>
-            <select name="conjuntoCerrado">
+            <label>¿En conjunto cerrado / unidad residencial? <span class="req">*</span></label>
+            <select name="conjuntoCerrado" required>
               <option value="">Seleccione…</option>
               <option>Sí</option>
               <option>No</option>
@@ -323,16 +321,16 @@
         </div>
         <div class="grid">
           <div class="field">
-            <label>Valor edificación / estructura</label>
-            <input type="number" min="0" name="valorEdificacion" placeholder="$">
+            <label>Valor edificación / estructura <span class="req">*</span></label>
+            <input type="text" inputmode="numeric" class="money-field" name="valorEdificacion" placeholder="$ 0" required>
           </div>
           <div class="field">
-            <label>Valor contenidos y enseres</label>
-            <input type="number" min="0" name="valorContenidos" placeholder="$">
+            <label>Valor contenidos y enseres <span class="req">*</span></label>
+            <input type="text" inputmode="numeric" class="money-field" name="valorContenidos" placeholder="$ 0" required>
           </div>
           <div class="field span2">
             <label>Valor equipos eléctricos/electrónicos de alto valor (opcional)</label>
-            <input type="number" min="0" name="valorEquipos" placeholder="$">
+            <input type="text" inputmode="numeric" class="money-field" name="valorEquipos" placeholder="$ 0">
             <span class="hint">Ej: computadores, televisores de gama alta, equipos de sonido, etc.</span>
           </div>
         </div>
@@ -446,32 +444,6 @@
     </div>
   </div>
 
-  <!-- ===================== ADMIN VIEW ===================== -->
-  <div id="viewAdmin" style="display:none;">
-    <h1 class="page-title">Panel AMC — Solicitudes de cotización</h1>
-    <p class="page-sub">Por seguridad, este formulario público no almacena ni muestra los datos de los clientes. Cada solicitud enviada se guarda automáticamente en una hoja de Google Sheets privada, a la que solo usted tiene acceso con su cuenta de Google, y le llega una notificación por correo con el resumen.</p>
-
-    <div class="admin-toolbar">
-      <div class="admin-stats">Seguimiento de cotizado / emitido</div>
-      <div style="display:flex;gap:10px;">
-        <a class="secondary" id="openSheetBtn" href="#" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;">Abrir hoja de seguimiento</a>
-      </div>
-    </div>
-
-    <div class="empty-state" id="adminInfoBox">
-      <div class="icon">🔒</div>
-      Este enlace del formulario es el que usted comparte con sus clientes.<br>
-      El acceso a los datos (hoja de Google Sheets) requiere iniciar sesión con su cuenta de Google autorizada.
-    </div>
-    <p class="lock-note">Nota técnica: reemplace el enlace del botón "Abrir hoja de seguimiento" por la URL de su Google Sheet en la constante <code>SHEET_URL</code> del código (sección CONFIG).</p>
-  </div>
-
-  <footer>
-    <span>AMC Protección · Seguros y Soluciones</span>
-    <span>Uso interno de intermediación de seguros</span>
-  </footer>
-</div>
-
 <script>
 (function(){
   document.getElementById('todayTag').textContent = new Date().toLocaleDateString('es-CO', {year:'numeric',month:'long',day:'numeric'});
@@ -489,7 +461,10 @@
     SHEET_URL: 'https://docs.google.com/spreadsheets/d/1zBFecbI0IMt53pvDAkcqfg8kw9Vg6BDZ8GUyHQm9TKE/edit?usp=sharing'
   };
 
-  document.getElementById('openSheetBtn').setAttribute('href', CONFIG.SHEET_URL);
+  const openSheetBtnEl = document.getElementById('openSheetBtn');
+  if(openSheetBtnEl){
+    openSheetBtnEl.setAttribute('href', CONFIG.SHEET_URL);
+  }
 
   const COLUMNS = [
     {key:'nombre', label:'Nombre completo'},
@@ -522,19 +497,17 @@
 
   // ---------- Tabs ----------
   const tabFormBtn = document.getElementById('tabFormBtn');
-  const tabAdminBtn = document.getElementById('tabAdminBtn');
   const viewForm = document.getElementById('viewForm');
   const viewAdmin = document.getElementById('viewAdmin');
 
-  tabFormBtn.addEventListener('click', () => switchTab('form'));
-  tabAdminBtn.addEventListener('click', () => switchTab('admin'));
+  if(tabFormBtn){
+    tabFormBtn.addEventListener('click', () => switchTab('form'));
+  }
 
   function switchTab(which){
     if(which==='form'){
-      tabFormBtn.classList.add('active'); tabAdminBtn.classList.remove('active');
       viewForm.style.display='block'; viewAdmin.style.display='none';
     } else {
-      tabAdminBtn.classList.add('active'); tabFormBtn.classList.remove('active');
       viewAdmin.style.display='block'; viewForm.style.display='none';
     }
   }
@@ -544,6 +517,45 @@
     r.addEventListener('change', e=>{
       document.getElementById('detalleSiniestroWrap').style.display = e.target.value==='Sí' ? 'block':'none';
     });
+  });
+
+  // ---------- Formato de miles en vivo para campos de valor en pesos ----------
+  // Convierte "4000000" -> "4.000.000", "400000000" -> "400.000.000", "3000" -> "3.000"
+  function formatMiles(digitsOnly){
+    if(!digitsOnly) return '';
+    return digitsOnly.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+  document.querySelectorAll('.money-field').forEach(input=>{
+    input.addEventListener('input', ()=>{
+      const digitsOnly = input.value.replace(/\D/g, '');
+      input.value = formatMiles(digitsOnly);
+    });
+    input.addEventListener('blur', ()=>{
+      const digitsOnly = input.value.replace(/\D/g, '');
+      input.value = formatMiles(digitsOnly);
+    });
+  });
+
+  // ---------- Validadores ----------
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function isEmailValid(value){
+    return EMAIL_RE.test(value.trim());
+  }
+
+  // Teléfono: solo dígitos mientras se escribe, máximo 10.
+  const telefonoInput = document.querySelector('input[name=telefono]');
+  telefonoInput.addEventListener('input', ()=>{
+    telefonoInput.value = telefonoInput.value.replace(/\D/g, '').slice(0, 10);
+  });
+
+  // Número de documento: si es Cédula o Cédula de extranjería, solo dígitos.
+  const tipoDocSelect = document.querySelector('select[name=tipoDoc]');
+  const numDocInput = document.querySelector('input[name=numDoc]');
+  numDocInput.addEventListener('input', ()=>{
+    if(tipoDocSelect.value.indexOf('Cédula') === 0 || tipoDocSelect.value.indexOf('Cédula') === 1 || tipoDocSelect.value.startsWith('Cédula')){
+      numDocInput.value = numDocInput.value.replace(/\D/g, '');
+    }
   });
 
   // ---------- Form submit ----------
@@ -561,16 +573,47 @@
       return;
     }
 
-    const requiredFields = ['nombre','tipoDoc','numDoc','telefono','correo','direccion','ciudadInmueble'];
-    for(const f of requiredFields){
+    const requiredFields = {
+      nombre: 'Nombre completo',
+      tipoDoc: 'Tipo de documento',
+      numDoc: 'Número de documento',
+      telefono: 'Teléfono / WhatsApp',
+      correo: 'Correo electrónico',
+      direccion: 'Dirección del inmueble',
+      ciudadInmueble: 'Ciudad del inmueble'
+    };
+    const missingFields = [];
+    let firstMissingEl = null;
+    for(const f in requiredFields){
       const el = form.elements[f];
       if(!el.value || !el.value.trim()){
-        formError.textContent = 'Por favor complete todos los campos obligatorios (*) antes de enviar.';
-        formError.style.display='block';
-        el.focus();
-        return;
+        missingFields.push(requiredFields[f]);
+        if(!firstMissingEl) firstMissingEl = el;
       }
     }
+    if(missingFields.length){
+      formError.textContent = 'Faltan los siguientes campos obligatorios: ' + missingFields.join(', ') + '.';
+      formError.style.display='block';
+      alert('Faltan los siguientes campos obligatorios:\n\n' + missingFields.map(m=>'• '+m).join('\n'));
+      if(firstMissingEl) firstMissingEl.focus();
+      return;
+    }
+    const correoEl = form.elements['correo'];
+    if(!isEmailValid(correoEl.value)){
+      formError.textContent = 'Ingrese un correo electrónico válido, con arroba (@) y dominio. Ejemplo: nombre@correo.com';
+      formError.style.display='block';
+      correoEl.focus();
+      return;
+    }
+
+    const telefonoDigits = telefonoInput.value.replace(/\D/g, '');
+    if(telefonoDigits.length < 7 || telefonoDigits.length > 10){
+      formError.textContent = 'Ingrese un número de teléfono válido (entre 7 y 10 dígitos, solo números).';
+      formError.style.display='block';
+      telefonoInput.focus();
+      return;
+    }
+
     if(!document.getElementById('habeasData').checked){
       formError.textContent = 'Debe autorizar el tratamiento de sus datos personales para poder enviar la solicitud.';
       formError.style.display='block';
