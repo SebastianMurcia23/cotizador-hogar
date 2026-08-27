@@ -18,7 +18,7 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);}
   body{min-height:100%;}
-  .wrap{max-width:880px;margin:0 auto;padding:28px 20px 80px;}
+  .wrap{max-width:880px;margin:30px auto;padding:28px 20px 80px;border: 2px rgb(0, 0, 0) solid;}
 
   /* Header / masthead */
   .masthead{
